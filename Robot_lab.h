@@ -12,3 +12,6 @@ void init_buttons();
 
 
 #endif /* ROBOT_LAB_H_ */
+void turnRight();
+void turnLeft();
+void moveForward();
