@@ -52,18 +52,6 @@ void initClocksPins()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 void resetAll()
 	{
 		TA0CCTL0 &= ~OUTMOD_7;
@@ -144,35 +132,35 @@ void turnLeftWide()
 
 void moveForward()
 	{
-	resetAll();
+		resetAll();
 
-	TA1CCR1 = 50;
-	TA0CCR1 = 50; // sets duty cycle
-	TA1CCTL1 |= OUTMOD_7;
+		TA1CCR1 = 50;
+		TA0CCR1 = 50; // sets duty cycle
+		TA1CCTL1 |= OUTMOD_7;
 
-	TA0CCTL1 |= OUTMOD_7;
+		TA0CCTL1 |= OUTMOD_7;
 
-	__delay_cycles(1000000);
+		__delay_cycles(1000000);
 
-	resetAll();
+		resetAll();
 
-	__delay_cycles(1000000);
+		__delay_cycles(1000000);
 	}
 
 void moveBackwards()
 	{
 
-	resetAll();
+		resetAll();
 
-	TA1CCTL1 |= OUTMOD_5;
+		TA1CCTL1 |= OUTMOD_5;
 
-	TA1CCTL0 |= OUTMOD_7;
+		TA1CCTL0 |= OUTMOD_7;
 
-	TA0CCTL1 |= OUTMOD_5;
+		TA0CCTL1 |= OUTMOD_5;
 
-	TA0CCTL0 |= OUTMOD_7;
-	__delay_cycles(1000000);
+		TA0CCTL0 |= OUTMOD_7;
 
+		__delay_cycles(1000000);
 
-	resetAll();
+		resetAll();
 	}
