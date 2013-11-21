@@ -5,15 +5,16 @@
  */
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
-
+    initClocksPins();
     while(1){
+    	moveForward();
     	turnRight();
     	turnLeft();
     	turnRightWide();
     	turnLeftWide();
-    	moveForward();
     	moveBackwards();
-    	__delay_cycles(1000000);
+
+    	__delay_cycles(10000000);
 
 
     }

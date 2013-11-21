@@ -33,7 +33,11 @@ void initClocksPins()
 
 	    TA1CTL |= TACLR; // clear timer
 
-	    TA1CTL |= TASSEL1; // configure SMCLK
+	    TA1CTL |= TASSEL1;
+	    // configure SMCLK
+
+	    TA0CTL |= TASSEL1;
+
 
 		__delay_cycles(1000000);
 
@@ -81,8 +85,11 @@ void turnRight()
 
 		TA1CCTL1 |= OUTMOD_7;
 
-		__delay_cycles(1000000);
+		__delay_cycles(500000);
 
+		resetAll();
+
+		__delay_cycles(1000000);
 	}
 
 void turnLeft()
@@ -94,6 +101,10 @@ void turnLeft()
 		TA1CCTL0 |= OUTMOD_7;
 
 		TA0CCTL1 |= OUTMOD_7;
+
+		__delay_cycles(500000);
+
+		resetAll();
 
 		__delay_cycles(1000000);
 	}
@@ -108,9 +119,13 @@ void turnRightWide()
 
 		TA1CCTL1 |= OUTMOD_7;
 		__delay_cycles(100000);
+
+		resetAll();
+
+		__delay_cycles(1000000);
 	}
 
-void turnLeftW()
+void turnLeftWide()
 	{
 		resetAll();
 
@@ -121,18 +136,27 @@ void turnLeftW()
 		TA0CCTL1 |= OUTMOD_7;
 
 		__delay_cycles(100000);
+
+		resetAll();
+
+		__delay_cycles(1000000);
 	}
 
 void moveForward()
 	{
 	resetAll();
+
+	TA1CCR1 = 50;
+	TA0CCR1 = 50; // sets duty cycle
 	TA1CCTL1 |= OUTMOD_7;
 
 	TA0CCTL1 |= OUTMOD_7;
 
 	__delay_cycles(1000000);
 
+	resetAll();
 
+	__delay_cycles(1000000);
 	}
 
 void moveBackwards()
@@ -150,4 +174,5 @@ void moveBackwards()
 	__delay_cycles(1000000);
 
 
+	resetAll();
 	}
