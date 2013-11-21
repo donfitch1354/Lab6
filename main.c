@@ -27,11 +27,7 @@ int main(void) {
 
     TA1CTL |= TASSEL1; // configure SMCLK
 
-    TA0CCTL1 |= OUTMOD_5; //sets to reset
-    TA0CCTL0 |= OUTMOD_7; //sets to reset/reset
 
-    TA1CCTL0 |= OUTMOD_7; //sets to reset
-    //TA1CCTL0 |= OUTMOD_5; //sets to reset
 
     TA0CCR0 = 100; //sets signal period to 100 clock cycles
     TA0CCR1 = 50; // sets duty cycle
@@ -63,12 +59,58 @@ void resetAll()
 		TA1CCTL1 &= ~OUTMOD_7;
 
 	}
+void turnRight()
+	{
+		resetAll();
 
+		TA0CCTL1 |= OUTMOD_5;
 
+		TA0CCTL0 |= OUTMOD_7;
 
+		TA1CCTL1 |= OUTMOD_7;
 
+		__delay_cycles(100000);
 
+	}
 
+void turnLeft()
+	{
+		resetAll();
+
+		TA1CCTL1 |= OUTMOD_5;
+
+		TA1CCTL0 |= OUTMOD_7;
+
+		TA0CCTL1 |= OUTMOD_7;
+
+		__delay_cycles(100000);
+	}
+
+void turnRightWide()
+	{
+		resetAll();
+
+		TA0CCTL1 |= OUTMOD_5;
+
+		TA0CCTL0 |= OUTMOD_7;
+
+		TA1CCTL1 |= OUTMOD_7;
+
+		__delay_cycles(100000);
+	}
+
+void turnLeftW()
+	{
+		resetAll();
+
+		TA1CCTL1 |= OUTMOD_5;
+
+		TA1CCTL0 |= OUTMOD_7;
+
+		TA0CCTL1 |= OUTMOD_7;
+
+		__delay_cycles(100000);
+	}
 
 
 
