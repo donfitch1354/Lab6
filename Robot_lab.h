@@ -15,3 +15,7 @@ void init_buttons();
 void turnRight();
 void turnLeft();
 void moveForward();
+void moveBackwards();
+void initClocksPins();
+void turnRightWide();
+void turnLeftWide();
